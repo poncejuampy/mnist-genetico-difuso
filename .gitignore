@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+*_rapido/
+modelo_final_rapido.keras
+.venv/
+venv/

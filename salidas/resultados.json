@@ -1,0 +1,217 @@
+{
+ "config": {
+  "pob": 10,
+  "gens": 6,
+  "n_ent": 20000,
+  "ep_fit": 3,
+  "ep_final": 10,
+  "n_difuso": 10000,
+  "sufijo": ""
+ },
+ "mejor_individuo": {
+  "neuronas_1": 256,
+  "neuronas_2": 256,
+  "tasa_aprendizaje": 0.003,
+  "dropout": 0.0
+ },
+ "aptitud_mejor": 0.9553999900817871,
+ "redes_entrenadas": 43,
+ "espacio": 900,
+ "historia_ga": [
+  {
+   "generacion": 0,
+   "mejor": 0.9412999749183655,
+   "media": 0.905620002746582,
+   "peor": 0.7940000295639038,
+   "mejor_individuo": {
+    "neuronas_1": 512,
+    "neuronas_2": 0,
+    "tasa_aprendizaje": 0.0005,
+    "dropout": 0.2
+   },
+   "redes_entrenadas_hasta_ahora": 10
+  },
+  {
+   "generacion": 1,
+   "mejor": 0.9526000022888184,
+   "media": 0.8895399928092956,
+   "peor": 0.44999998807907104,
+   "mejor_individuo": {
+    "neuronas_1": 256,
+    "neuronas_2": 16,
+    "tasa_aprendizaje": 0.003,
+    "dropout": 0.0
+   },
+   "redes_entrenadas_hasta_ahora": 15
+  },
+  {
+   "generacion": 2,
+   "mejor": 0.9526000022888184,
+   "media": 0.9342099964618683,
+   "peor": 0.8960999846458435,
+   "mejor_individuo": {
+    "neuronas_1": 256,
+    "neuronas_2": 16,
+    "tasa_aprendizaje": 0.003,
+    "dropout": 0.0
+   },
+   "redes_entrenadas_hasta_ahora": 23
+  },
+  {
+   "generacion": 3,
+   "mejor": 0.9553999900817871,
+   "media": 0.9404500007629395,
+   "peor": 0.9262999892234802,
+   "mejor_individuo": {
+    "neuronas_1": 256,
+    "neuronas_2": 256,
+    "tasa_aprendizaje": 0.003,
+    "dropout": 0.0
+   },
+   "redes_entrenadas_hasta_ahora": 30
+  },
+  {
+   "generacion": 4,
+   "mejor": 0.9553999900817871,
+   "media": 0.9423800051212311,
+   "peor": 0.9169999957084656,
+   "mejor_individuo": {
+    "neuronas_1": 256,
+    "neuronas_2": 256,
+    "tasa_aprendizaje": 0.003,
+    "dropout": 0.0
+   },
+   "redes_entrenadas_hasta_ahora": 37
+  },
+  {
+   "generacion": 5,
+   "mejor": 0.9553999900817871,
+   "media": 0.9461600005626678,
+   "peor": 0.9272000193595886,
+   "mejor_individuo": {
+    "neuronas_1": 256,
+    "neuronas_2": 256,
+    "tasa_aprendizaje": 0.003,
+    "dropout": 0.0
+   },
+   "redes_entrenadas_hasta_ahora": 43
+  }
+ ],
+ "base": {
+  "parametros": 101770,
+  "val": 0.9731000065803528,
+  "prueba": 0.9772999882698059,
+  "segundos": 23.491451632999997
+ },
+ "final": {
+  "parametros": 269322,
+  "val": 0.9751999974250793,
+  "prueba": 0.9779999852180481,
+  "segundos": 36.658943436999834
+ },
+ "segundos_ga": 253.79976754400013,
+ "segundos_difuso": 20.232032958000218,
+ "difuso": {
+  "seguro": {
+   "imagenes": 9791,
+   "porcentaje": 97.91,
+   "aciertos": 9659,
+   "errores": 132,
+   "precision": 98.65182310284956
+  },
+  "dudoso": {
+   "imagenes": 128,
+   "porcentaje": 1.28,
+   "aciertos": 81,
+   "errores": 47,
+   "precision": 63.28125
+  },
+  "no reconocido": {
+   "imagenes": 81,
+   "porcentaje": 0.81,
+   "aciertos": 40,
+   "errores": 41,
+   "precision": 49.382716049382715
+  }
+ },
+ "errores": 220,
+ "errores_marcados": 88,
+ "superficie_certeza": [
+  13.333333333333334,
+  86.66666666666664
+ ],
+ "confusiones_top": [
+  [
+   3,
+   8,
+   13
+  ],
+  [
+   9,
+   4,
+   12
+  ],
+  [
+   2,
+   8,
+   10
+  ],
+  [
+   7,
+   2,
+   9
+  ],
+  [
+   9,
+   7,
+   8
+  ]
+ ],
+ "top5": [
+  [
+   {
+    "neuronas_1": 256,
+    "neuronas_2": 256,
+    "tasa_aprendizaje": 0.003,
+    "dropout": 0.0
+   },
+   0.9553999900817871
+  ],
+  [
+   {
+    "neuronas_1": 256,
+    "neuronas_2": 128,
+    "tasa_aprendizaje": 0.003,
+    "dropout": 0.2
+   },
+   0.9545000195503235
+  ],
+  [
+   {
+    "neuronas_1": 256,
+    "neuronas_2": 32,
+    "tasa_aprendizaje": 0.003,
+    "dropout": 0.0
+   },
+   0.9528999924659729
+  ],
+  [
+   {
+    "neuronas_1": 256,
+    "neuronas_2": 128,
+    "tasa_aprendizaje": 0.003,
+    "dropout": 0.1
+   },
+   0.9528999924659729
+  ],
+  [
+   {
+    "neuronas_1": 256,
+    "neuronas_2": 16,
+    "tasa_aprendizaje": 0.003,
+    "dropout": 0.0
+   },
+   0.9526000022888184
+  ]
+ ]
+}

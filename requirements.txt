@@ -1,0 +1,7 @@
+tensorflow>=2.16
+scikit-fuzzy
+numpy
+scipy
+networkx
+matplotlib
+pillow

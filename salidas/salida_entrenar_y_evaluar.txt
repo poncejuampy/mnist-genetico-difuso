@@ -1,0 +1,73 @@
+
+==============================================================================
+1) DATOS: MNIST (digitos manuscritos de 28 x 28 pixeles)
+==============================================================================
+Entrenamiento: 50000 imagenes | Validacion: 10000 | Prueba: 10000 | Pixeles por imagen: 784
+Cantidad por digito en prueba: 0:980, 1:1135, 2:1032, 3:1010, 4:982, 5:892, 6:958, 7:1028, 8:974, 9:1009
+
+==============================================================================
+2) LINEA DE BASE: red hecha a mano, sin algoritmo genetico (10 epocas)
+==============================================================================
+Red 784 -> 128 -> 10 | Adam, tasa de aprendizaje 0.001 | sin dropout | parametros: 101770
+Precision en validacion: 97.31 %   Precision en PRUEBA: 97.73 %   (entrenamiento: 23 s)
+
+==============================================================================
+3) ALGORITMO GENETICO: busqueda de la topologia y los hiperparametros
+==============================================================================
+Espacio de busqueda: 900 combinaciones posibles | poblacion 10 | 6 generaciones | seleccion por torneo (3) | cruce uniforme 0.8 | mutacion 0.25 por gen | elitismo 2
+Aptitud = precision en VALIDACION tras entrenar 3 epoca(s) con 20000 imagenes
+Generacion 0: mejor=0.9413  media=0.9056  peor=0.7940  (redes entrenadas: 10)  mejor red: 512-0 neuronas, lr=0.0005, dropout=0.2
+Generacion 1: mejor=0.9526  media=0.8895  peor=0.4500  (redes entrenadas: 15)  mejor red: 256-16 neuronas, lr=0.003, dropout=0.0
+Generacion 2: mejor=0.9526  media=0.9342  peor=0.8961  (redes entrenadas: 23)  mejor red: 256-16 neuronas, lr=0.003, dropout=0.0
+Generacion 3: mejor=0.9554  media=0.9405  peor=0.9263  (redes entrenadas: 30)  mejor red: 256-256 neuronas, lr=0.003, dropout=0.0
+Generacion 4: mejor=0.9554  media=0.9424  peor=0.9170  (redes entrenadas: 37)  mejor red: 256-256 neuronas, lr=0.003, dropout=0.0
+Generacion 5: mejor=0.9554  media=0.9462  peor=0.9272  (redes entrenadas: 43)  mejor red: 256-256 neuronas, lr=0.003, dropout=0.0
+Redes distintas entrenadas por el genetico: 43 de 900 posibles (4.8 % del espacio) en 254 s
+MEJOR INDIVIDUO: {'neuronas_1': 256, 'neuronas_2': 256, 'tasa_aprendizaje': 0.003, 'dropout': 0.0}  (aptitud 95.54 %)
+Las 5 mejores redes probadas:
+   95.54 %   256 - 256 neuronas   lr=0.003  dropout=0.0
+   95.45 %   256 - 128 neuronas   lr=0.003  dropout=0.2
+   95.29 %   256 -  32 neuronas   lr=0.003  dropout=0.0
+   95.29 %   256 - 128 neuronas   lr=0.003  dropout=0.1
+   95.26 %   256 -  16 neuronas   lr=0.003  dropout=0.0
+
+==============================================================================
+4) RED ELEGIDA POR EL GENETICO, entrenada 10 epocas con las 50000 imagenes (igual presupuesto que la base)
+==============================================================================
+Parametros: 269322 | Precision en validacion: 97.52 %   Precision en PRUEBA: 97.80 %   (entrenamiento: 37 s)
+
+                                      Red base    Red del genetico
+Parametros                              101770              269322
+Precision en validacion (%)              97.31               97.52
+Precision en PRUEBA (%)                  97.73               97.80
+Errores de la red final en prueba: 220 de 10000
+Confusiones mas frecuentes (real -> la red dijo): 3->8 (13), 9->4 (12), 2->8 (10), 7->2 (9), 9->7 (8)
+
+==============================================================================
+5) LOGICA DIFUSA: certeza de cada respuesta (10000 imagenes de prueba)
+==============================================================================
+Umbrales fijados de antemano: certeza >= 70 'seguro' | entre 30 y 70 'dudoso' | menos de 30 'no reconocido'  (20 s)
+
+Decision          Imagenes  % del total  Aciertos  Errores  Precision (%)
+seguro                9791        97.91      9659      132          98.65
+dudoso                 128         1.28        81       47          63.28
+no reconocido           81         0.81        40       41          49.38
+TODAS                10000       100.00      9780      220          97.80
+
+De los 220 errores de la red, 88 quedaron marcados como 'dudoso' o 'no reconocido' (40.0 %): el modulo difuso 'avisa' antes de que el usuario se lleve una respuesta mala.
+Si solo se aceptan las respuestas 'seguras': precision 98.65 % sobre 97.91 % de las imagenes (contra 97.80 % sobre el 100 % sin la capa difusa).
+
+==============================================================================
+6) EJEMPLOS DE EJECUCION (primeras imagenes del conjunto de prueba)
+==============================================================================
+Imagen #0: digito real 7 -> Se parece en un 100.0 % al 7 -> SEGURO (certeza difusa 86.7)
+Imagen #1: digito real 2 -> Se parece en un 100.0 % al 2 -> SEGURO (certeza difusa 86.7)
+Imagen #2: digito real 1 -> Se parece en un 100.0 % al 1 -> SEGURO (certeza difusa 86.7)
+Imagen #3: digito real 0 -> Se parece en un 100.0 % al 0 -> SEGURO (certeza difusa 86.7)
+Imagen #4: digito real 4 -> Se parece en un 100.0 % al 4 -> SEGURO (certeza difusa 86.7)
+Imagen #5: digito real 1 -> Se parece en un 100.0 % al 1 -> SEGURO (certeza difusa 86.7)
+Imagen #6: digito real 4 -> Se parece en un 100.0 % al 4 -> SEGURO (certeza difusa 86.7)
+Imagen #7: digito real 9 -> Se parece en un 97.7 % al 9 -> SEGURO (certeza difusa 86.7)
+Graficos guardados en: graficos
+Superficie difusa: certeza minima 13.33, maxima 86.67
+Tiempo total: 342 s
